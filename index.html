@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Inspired by https://danielyxie.github.io/bitburner/ -->
+
+    <meta charset="utf-8">
+    <title>Chicken Xtreme</title>
+    <meta name="description" content="A javascript game about chickens, but also, not about chickens">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="javascript" href="js/main.js">
+
+</head>
+<body>
+    <main class="flex-col">
+        <div id="statBar" class="flex-row">
+            <div id="statBar-title" class="statBar-item">
+                Chicken: Xtreme
+            </div>
+        </div>
+        <div class="flex-row">
+            <div id="navMenu" class="flex-col">
+                <button class='navItem' id='navMenu-termButton'>Terminal</button>
+            </div>
+            <div id="infoScreen" class="flex-col">
+                <div id="term-output"></div>
+                <div id="term-input" class="flex-row">
+                    <div id="term-inputHeader">[/PATH/PATH/PATH]$</div>
+                    <input id="term-inputBox"></input>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

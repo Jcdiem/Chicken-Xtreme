@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css');
+
+/* High level selections */
+html{
+    color: red;
+    background-color: #050505;
+    font-size: 1em;
+    font-family: 'Robot Mono', monospace;
+    --teko-font: 'Teko', sans-serif;
+}
+
+/* Helper Classes */
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Specific Mentions */
+
+
+ /* Stat Bar Stuff */
+#statBar {
+    width: 98.85%;
+    border: solid 3px limegreen;
+    margin-bottom: 10px;
+    height: 5vh;
+}
+
+.statBar-item{
+    border: 1px solid #005000;
+    margin: 0 1rem 0; 
+}
+
+#statBar-title {
+    font-family: var(--teko-font);
+    font-size: 2em;
+}
+
+ /* Nav menu stuff */
+#navMenu {
+    height: 90vh;
+    width: 9%;
+    border: solid 3px limegreen;
+    margin-right: 5px;
+}
+
+.navItem {
+    background-color: #101010;
+    color: currentColor;
+    border: 1px solid darkgoldenrod;
+    margin: 0.5em 0.15em;
+    font-size: 1em;
+}
+
+.navItemSelected {
+    background-color: #505050;
+    color: #FFAAAA;
+    border: 1px solid darkgoldenrod;
+    margin: 0.5em 0.15em;
+    font-size: 1em;
+}
+
+ /* Terminal Things */
+
+#infoScreen {
+    /* height: 89%; */
+    width: 89%;
+    border: solid 3px limegreen;
+    margin-left: 5px;
+}
+
+#term-output {
+    background-color: black;
+    border: 1px solid #009000;
+    margin: 0.25rem 0.5rem;
+    height: 95%;
+}
+
+#term-input {
+    background-color: black;
+    color: currentColor;
+    border: 1px solid #009000;
+    margin: 0.25rem 0.5rem;
+    height: 5%;
+}
+
+#term-inputHeader {
+    font-size: 1em;
+    font-family: 'Hack', monospace;
+    margin: auto 5px auto 0;
+}
+
+#term-inputBox {
+    background-color: black;
+    color: currentColor;
+    border: none;
+    font-size: 1em;
+    font-family: 'Hack', monospace;
+}
