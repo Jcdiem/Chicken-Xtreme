@@ -3,7 +3,7 @@
 ## Another one?
 Okay, just hear me out: Chicken is my go to name for any project I don't intend to 100% finish to perfection. It helps me to view my projects from an objective view and just learn what I want to.
 
-This rendetion of Chicken will be completed to the point of Chicken 2, about. My goal with this project is to be able to use it as my WCTC Intro to Javascript course. I'm starting work early because I'm bored and really should have just tested out, but at this point may as well as learn some tidbits from the intro class and have some fun.
+This rendetion of Chicken will be completed to the point of Chicken 2, about. My goal with this project is to be able to use it as my WCTC Intro to Javascript course final project. I'm starting work early because I'm bored and really should have just tested out, but at this point may as well as learn some tidbits from the intro class and have some fun.
 
 ## Using and Timeline
 ### How to use
