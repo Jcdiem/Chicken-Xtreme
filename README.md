@@ -7,7 +7,7 @@ This rendetion of Chicken will be completed to the point of Chicken 2, about. My
 
 ## Using and Timeline
 ### How to use
-Currently: Host a web server and throw these files somewhere in it ¯\_(ツ)_/¯
+Currently: Host a web server and throw these files somewhere in it ¯\\\_(ツ)_/¯
 
 ### Timeline
 Class ends December, so guess that's my limit. I'm not going to spend the time making a Trello-like board for this, so just follow the commits for what's going on. I'm usually pretty good about describing comments. I'll also leave a changelog to follow previous progress for 'full' changes.
