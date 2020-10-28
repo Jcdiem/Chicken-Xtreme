@@ -84,6 +84,11 @@ html{
     height: 95%;
 }
 
+.termItem {
+    /*border: 1px solid red;*/
+    margin: 0 0 0 0;
+}
+
 #term-input {
     background-color: black;
     color: currentColor;
@@ -93,12 +98,14 @@ html{
 }
 
 #term-inputHeader {
+    text-align: right;
     font-size: 1em;
     font-family: 'Hack', monospace;
     margin: auto 5px auto 0;
 }
 
 #term-inputBox {
+    width: 80%;
     background-color: black;
     color: currentColor;
     border: none;

@@ -12,11 +12,13 @@
     <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
     <link rel="stylesheet" href="css/main.css">
 
-    <link rel="javascript" href="js/main.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
-    <main class="flex-col">
+<!--Using main as a wrapper for flexbox-->
+<main class="flex-col">
+    <div id="terminalWrapper">
         <div id="statBar" class="flex-row">
             <div id="statBar-title" class="statBar-item">
                 Chicken: Xtreme
@@ -27,13 +29,17 @@
                 <button class='navItem' id='navMenu-termButton'>Terminal</button>
             </div>
             <div id="infoScreen" class="flex-col">
-                <div id="term-output"></div>
+                <div id="term-output" class="flex-col">
+                    <!--                    Placeholder for JS-->
+                </div>
                 <div id="term-input" class="flex-row">
-                    <div id="term-inputHeader">[/PATH/PATH/PATH]$</div>
-                    <input id="term-inputBox"></input>
+                    <div id="term-inputHeader">[/ONE/TWO/THREE]$</div>
+                    <input id="term-inputBox">
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
