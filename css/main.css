@@ -11,6 +11,15 @@ html{
     --teko-font: 'Teko', sans-serif;
 }
 
+button{
+    display: inline-block;
+    background-color: #050505;
+    border-radius: 0.5rem;
+    border: solid 1px red;
+    color: limegreen;
+    padding: 0.5rem;
+}
+
 /* Helper Classes */
 
 .flex-row{
@@ -25,6 +34,38 @@ html{
 
 /* Specific Mentions */
 
+ /* Intro */
+#intro-card{
+    text-align: center;
+    background-color: #202020;
+    margin: auto;
+    width: 40%;
+    border: groove 3px limegreen;
+    border-radius: 2rem;
+    position: relative;
+    opacity: 0.1;
+    padding: 1rem;
+}
+
+#titleCardContentWrapper{
+    /*color: #202020;*/
+    /*display: none;*/
+}
+
+#gameTitle{
+    font-family: 'Hack', monospace;
+}
+
+#startGameButton{
+    font-size: 2em;
+}
+
+#introAestheticToggle{
+    font-size: 0.75em;
+    background-color: lightgrey;
+    color: #202020;
+    margin: auto;
+}
 
  /* Stat Bar Stuff */
 #statBar {

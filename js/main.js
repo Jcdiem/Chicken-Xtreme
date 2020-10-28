@@ -7,16 +7,13 @@ const cliModes = {
 newUser = true; //TODO: Have a session cookie to store progress, so it doesn't reset every time
 //Setup for initial users
 if(newUser){
-
+    startIntro();
 }
 
 let cliMode = cliModes.STORY; //TODO: Move cliMode to be handled by buttons/cur screen
 if(!cliMode){
     throw new Error('cliModes ENUM is borked')
 }
-
-
-
 
 $('#term-inputBox').keydown(function(e){
     if(e.key === 'Enter'){
@@ -35,5 +32,3 @@ $('#term-inputBox').keydown(function(e){
         $('#term-inputBox').val('');
     }
 });
-
-
