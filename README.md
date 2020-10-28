@@ -16,8 +16,10 @@ Self-Host: Host a web server and throw these files somewhere in it ¯\\\_(ツ)_/
 Class ends December, so guess that's my limit. I'm not going to spend the time making a Trello-like board for this, so just follow the commits for what's going on. I'm usually pretty good about describing comments. I'll also leave a changelog to follow previous progress for 'full' changes.
 
 ### Changelog
+#### V 0.0.2 - Term Framework
+Added the framework for the terminal. Basic commands 'help', 'cd', and 'clear' have been added.
 
-#### V 0.0.1 - Framework
+#### V 0.0.1 - Design Framework
 Got the framework for the design down. I have it formatted out how I want it to look, along with fonts and color schemes. Just have to start adding actual content now.
 
 ## Credits
