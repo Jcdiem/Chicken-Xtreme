@@ -58,5 +58,4 @@ function startIntro() {
 
     //Visited cookie
     document.cookie = 'visited=true;data=;SameSite=Strict';
-
 }

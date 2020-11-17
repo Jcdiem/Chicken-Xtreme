@@ -1,52 +1,51 @@
 $(document).ready(function () {
-    //Scripts to be added
-    // let scriptArray = [];
-    //
-    // const globalScript = document.createElement('script');
-    // globalScript.src = 'js/globals.js';
-    // scriptArray.push(globalScript);
-    //
-    // const termScript = document.createElement('script');
-    // termScript.src = 'js/term.js';
-    // scriptArray.push(termScript);
-    //
-    // const introScript = document.createElement('script');
-    // introScript.src = 'js/intro.js';
-    // scriptArray.push(introScript);
-    //
-    //
-    //
-    //
-    //
-    // scriptArray.forEach(item => document.head.appendChild(item));
-    //End scripts to be added
     console.debug('Running main');
 
 
-
+    //Set up the ENUM for command modes
     $('#term-inputHeader').text('[/]$')
     const cliModes = {
         TERM: 0,
         BATTLE: 1,
         STORY: 2,
     }
-    let newUser = true; //TODO: Have a session cookie to store progress, so it doesn't reset every time
-//Setup for initial users
-
-    console.debug('User has visited before: '+getVisited());
-    if (!getVisited()) {
-        startIntro();
-    }
-
     let cliMode = cliModes.STORY; //TODO: Move cliMode to be handled by buttons/cur screen
-    if (!cliMode) {
+    if (!cliMode) { //Error checking to make sure the Enum works correctly
         throw new Error('cliModes ENUM is borked')
     }
 
+    //Player setup
+    let playerChar = {
+        name: 'John Doe',
+        money: 0,
+        statBlock: {
+            level: 0,
+            health: 10,
+            atk: 1,
+            def: 1,
+        },
+        locationsAllowed: {
+            terminal: true,
+        },
+        otherValues: {
+            isDev: true, //Debug value or cheating mode TODO: CATCH_ALL: SET DEV VALUES FALSE
+        },
+
+    };
+
+    //Run the intro for those who haven't played
+    if (!getVisited()) {
+        startIntro();
+        saveGameData(playerChar);
+    }
+    else playerChar = getSaveGame();
+
+    //Handle the commands input
     $('#term-inputBox').keydown(function (e) {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter') { //Only run commands after enter has been pressed
             switch (cliMode) {
                 case cliModes.TERM:
+                    // noinspection JSJQueryEfficiency
                     termCommand($('#term-inputBox').val());
                     break;
                 case cliModes.STORY:
@@ -57,7 +56,8 @@ $(document).ready(function () {
                     console.error('value set out of bounds of enum')
                     break;
             }
-            $('#term-inputBox').val('');
+            // noinspection JSJQueryEfficiency
+            $('#term-inputBox').val(''); //Clear the input box
         }
     });
 });

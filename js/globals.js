@@ -4,14 +4,13 @@ function toggleAesthetic(){
     console.info('Game theme has been changed');
     //TODO: Add if statement checking for current state to allow for toggling back to dark mode
     //TODO: Make light-mode look cool too (steal from solarized-light)
-    $('html').css("background-color", "white");
-    $('html').css("color", "black");
-    $('.intro-card').css("background-color", "white");
-    // $('html').css("background-color", "white");
-}
+    const lightStyle = {
+        'background-color': 'white',
+        'color': 'black',
 
-function setData(data){ //TODO: Data will be encoded in base64
-    document.cookie = 'data=' + data;
+    }
+    $('html').css(lightStyle);
+    $('.intro-card').css(lightStyle);
 }
 
 function getVisited(){
@@ -24,6 +23,17 @@ function getVisited(){
     else return false;
 }
 
-function getData(){
+//Save game handling
 
+function saveGameData(playerObject){//Data saved with stringify
+    window.localStorage.setItem('chickenXSave', JSON.stringify(playerObject));
+}
+
+function getSaveGame(){
+    return JSON.parse(window.localStorage.getItem('chickenXSave'));
+}
+
+function restartSave(defaultPlayer){
+    window.localStorage.removeItem('chickenXSave');
+    window.localStorage.setItem('chickenXSave', JSON.stringify(defaultPlayer));
 }
