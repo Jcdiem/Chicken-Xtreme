@@ -30,5 +30,5 @@ Got the framework for the design down. I have it formatted out how I want it to 
 
 ### Inspiration
 <ul>
-    <li> <a href="https://danielyxie.github.io/bitburner/">danielyxie</a> for the general aesthetic and a lot of ideas for my game. If you want a better and finished version of my project, check their BitBurner project out. </li>
+    <li> <a href="https://danielyxie.github.io/bitburner/">danielyxie</a> for the general aesthetic and a lot of ideas for my game. If you want a cool casual cyberpunk-y terminal game, definetely check their work out. </li>
 </ul>
