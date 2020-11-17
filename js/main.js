@@ -33,9 +33,8 @@ $(document).ready(function () {
     let newUser = true; //TODO: Have a session cookie to store progress, so it doesn't reset every time
 //Setup for initial users
 
-
-
-    if (newUser) {
+    console.debug('User has visited before: '+getVisited());
+    if (!getVisited()) {
         startIntro();
     }
 

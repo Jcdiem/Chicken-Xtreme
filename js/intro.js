@@ -15,7 +15,8 @@ function startIntro() {
                 'related reasons. This one is for an introductory JavaScript course. I may have gotten ' +
                 'a little carried away throughout the process.<br><br>' +
                 'Regardless: This game is a text-based RPG where you have to type a lot of commands. ' +
-                'If that\'s your thing and you plan to stick around, click \'start\' to begin.' +
+                'If that\'s your thing and you plan to stick around, click \'start\' to begin. <br>' +
+                'Also, this game uses cookies for progress, so if that\'s a problem, don\'t click start.' +
                 '</p>' +
                 '<br>' +
                 '<button id="startGameButton">Start</button>' +
@@ -40,6 +41,8 @@ function startIntro() {
         $('#titleCardContentWrapper').fadeIn(500);
     });
 
+
+    //Buttons
     $('#introAestheticToggle').click(toggleAesthetic);
 
     $('#startGameButton').click(function() {
@@ -52,5 +55,8 @@ function startIntro() {
             $('main').show();
         })
     })
+
+    //Visited cookie
+    document.cookie = 'visited=true;data=;SameSite=Strict';
 
 }
