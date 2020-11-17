@@ -1,3 +1,5 @@
+console.debug('Globals loaded');
+
 function toggleAesthetic(){
     console.info('Game theme has been changed');
     //TODO: Add if statement checking for current state to allow for toggling back to dark mode

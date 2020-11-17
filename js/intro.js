@@ -1,3 +1,5 @@
+console.debug('Intro loaded');
+
 function startIntro() {
     //Hide the main screen
     $('main').hide();
@@ -18,7 +20,7 @@ function startIntro() {
                 '<br>' +
                 '<button id="startGameButton">Start</button>' +
                 '<br>' +
-                '<button id="introAestheticToggle">Turn Off Cool Mode</button>' + //TODO: Fix aesthetic formatting
+                '<button id="introAestheticToggle">Turn Off Cool Mode</button>' + //TODO: Fix aesthetic button formatting
             '</div>' +
         '</div>'
     );
@@ -38,17 +40,17 @@ function startIntro() {
         $('#titleCardContentWrapper').fadeIn(500);
     });
 
-}
+    $('#introAestheticToggle').click(toggleAesthetic);
 
-$('#startGameButton').click(function(){ //TODO: fix button not clicking
-    console.debug('StartGameButton was clicked');
-    $('#titleCardContentWrapper').fadeOut(500);
-    $('#titleCardContentWrapper').animate({
-        width: '0%',
-        height: '0%',
-        opacity: '0',
-    },500,0,function (){
-        $('main').show();
+    $('#startGameButton').click(function() {
+        $('#intro-card').fadeOut(500);
+        $('#titleCardContentWrapper').animate({
+            width: '0%',
+            height: '0%',
+            opacity: '0',
+        },500,0,function (){
+            $('main').show();
+        })
     })
-})
-// $('#introAestheticToggle').click(toggleAesthetic()); //TODO: Fix aesthetic button
+
+}

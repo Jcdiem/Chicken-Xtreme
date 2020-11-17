@@ -1,3 +1,5 @@
+console.debug('Terminal library loaded');
+
 function termCommand(input){
     termOuput($('#term-input').text() + input);
     const args = String(input).trim().split(/ +/g)
