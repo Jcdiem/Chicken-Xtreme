@@ -16,6 +16,10 @@ Self-Host: Host a web server and throw these files somewhere in it ¯\\\_(ツ)_/
 Class ends December, so guess that's my limit. I'm not going to spend the time making a Trello-like board for this, so just follow the commits for what's going on. I'm usually pretty good about describing comments. I'll also leave a changelog to follow previous progress for 'full' changes.
 
 ### Changelog
+#### V 0.0.3 - Battle Framework
+Added framework for a battling system. The BattleManager class can currently create enemies and give them stats, a name, and a random intent.
+I hope to work on adding a specialised style based upon good stats, I.E. a health heavy enemy will play tank when with a partner, but right now all intents are random.
+
 #### V 0.0.2 - Term Framework
 Added the framework for the terminal. Basic commands 'help', 'cd', and 'clear' have been added.
 
