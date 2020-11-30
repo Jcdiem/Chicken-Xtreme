@@ -17,6 +17,10 @@
     <script type="text/javascript" src="js/globals.js"></script>
     <script type="text/javascript" src="js/intro.js"></script>
     <script type="text/javascript" src="js/term.js"></script>
+
+    <script type="text/javascript" src="js/story.js"></script>
+
+    <script type="text/javascript" src="js/monster.js"></script>
     <script type="text/javascript" src="js/battle.js"></script>
 
 </head>
@@ -27,12 +31,31 @@
         <div id="statBar-title" class="statBar-item">
             Chicken: Xtreme
         </div>
-    </div>
-    <div class="flex-row">
-        <div id="navMenu" class="flex-col">
-            <button class='navItem' id='navMenu-termButton'>Terminal</button>
+        <div id="statBar-plyName" class="statBar-item">
+            Name: John Doe
         </div>
-        <div id="infoScreen" class="flex-col">
+        <div id="statBar-plyMoney" class="statBar-item">
+            Cxn: 99999
+        </div>
+        <div id="statBar-plyHP" class="statBar-item">
+            HP: 99999
+        </div>
+        <div id="statBar-plyLvl" class="statBar-item">
+            Lvl: 99999
+        </div>
+        <div id="statBar-plyExp" class="statBar-item">
+            XP: 100%
+        </div>
+    </div>
+    <div id='main-screen' class="flex-row">
+        <div id="navMenu" class="flex-col">
+            <ul>
+                <li><a class='navItem' id='navMenu-termButton' href="#terminalWindow">Terminal</a></li>
+                <li><a class="navItem" id="navMenu-dbgButton" href="#debugWindow">DEBUG</a></li>
+            </ul>
+
+        </div>
+        <div id="terminalWindow" class="info-screen flex-col tab-pane active">
             <div id="term-output" class="flex-col">
                 <!--                    Placeholder for JS-->
             </div>
@@ -41,6 +64,24 @@
                 <input id="term-inputBox" title="terminal input">
             </div>
         </div>
+        <div id="debugWindow" class="info-screen tab-pane flex-col">
+            <div>
+                CLI Modes:
+                <button id="dbgStoryBtn">STORY</button>
+                <button id="dbgBattleBtn">BATTLE</button>
+                <button id="dbgTermBtn">TERM</button>
+            </div>
+            <div>
+                Battle Debugging:
+                <button id="dbgLvl1BattleBtn">Start A Dif 1 Battle</button>
+            </div>
+            <div>
+                Save Debugging
+                <button id="dbgDeleteSave">Delete Save</button>
+                <button id="dbgForceSave">Force Save</button>
+            </div>
+        </div>
+        <div id=""></div>
     </div>
 </main>
 <script type="text/javascript" src="js/main.js"></script>

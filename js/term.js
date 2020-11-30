@@ -1,13 +1,14 @@
 console.debug('Terminal library loaded');
 
 function termCommand(input){
-    termOuput($('#term-input').text() + input);
+    termOutput($('#term-input').text() + input);
     const args = String(input).trim().split(/ +/g)
     const cmd = args.shift().toLowerCase();
 
+    console.log('switch running');
     switch(cmd){
         case 'help':
-            termOuput('Availble commands are \'cd\', \'clear\', and \'help\'')
+            termOutput('Availble commands are \'cd\', \'clear\', and \'help\'')
             break;
 
         case 'cd':
@@ -22,16 +23,16 @@ function termCommand(input){
         case 'clear':
             $('#term-output').empty();
             //Resend last, so they know they just cleared
-            termOuput($('#term-input').text() + input);
+            termOutput($('#term-input').text() + input);
             break;
 
         default:
-            termOuput('Unknown command \'' + cmd + '\', try \'help\'');
+            termOutput('Unknown command \'' + cmd + '\', try \'help\'');
             break;
     }
 }
 
-function termOuput(txt){
+function termOutput(txt){
     $('#term-output').append('<p class="termItem">' + txt + '</p>');
 }
 

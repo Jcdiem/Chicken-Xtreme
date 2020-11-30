@@ -31,6 +31,7 @@ function getVisited(){
 //Save game handling
 
 function saveGameData(playerObject){//Data saved with stringify
+    console.debug('saving game');
     window.localStorage.setItem('chickenXSave', JSON.stringify(playerObject));
 }
 
@@ -39,13 +40,34 @@ function getSaveGame(){
 }
 
 function restartSave(defaultPlayer){
+    console.debug('deleting save');
     window.localStorage.removeItem('chickenXSave');
-    window.localStorage.setItem('chickenXSave', JSON.stringify(defaultPlayer));
+    location.reload(true);
 }
 
-const difficulty = {
+const Difficulty = {
     EASY: 0,
     MEDIUM: 1,
     HARD: 2,
     AVIAN: 3,
+}
+
+function updateStats(info={
+    name: 'John Doe',
+    money: 0,
+    statBlock: {
+        level: 0,
+        exp: 0,
+        health: 10,
+        atk: 1,
+        def: 1,
+    }
+
+}){
+    $('#statBar-plyExp').text('XP: ' + info.statBlock.exp + '%');
+    $('#statBar-plyHP').text('HP: ' + info.statBlock.health);
+    $('#statBar-plyName').text(info.name);
+    $('#statBar-plyLvl').text('Lvl: ' + info.statBlock.level);
+    $('#statBar-plyMoney').text('Cxn: ' + info.money);
+
 }

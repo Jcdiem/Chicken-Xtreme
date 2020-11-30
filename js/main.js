@@ -2,6 +2,10 @@ $(document).ready(function () {
     console.debug('Running main');
 
 
+    //Page setup
+    $('#main-screen').tabs();
+
+
     //Set up the ENUM for command modes
     $('#term-inputHeader').text('[/]$')
     const cliModes = {
@@ -15,17 +19,19 @@ $(document).ready(function () {
     }
 
     //Player setup
-    let playerChar = {
+    const basePlayer ={ //TODO: Implement leveling properly
         name: 'John Doe',
         money: 0,
         statBlock: {
             level: 0,
+            exp: 0,
             health: 10,
             atk: 1,
             def: 1,
         },
         locationsAllowed: {
             terminal: true,
+            debug: true, //TODO: implement a place that only shows up after searching
         },
         otherValues: {
             isDev: true, //Debug value or cheating mode TODO: CATCH_ALL: SET DEV VALUES FALSE
@@ -33,24 +39,32 @@ $(document).ready(function () {
 
     };
 
+
+    let playerChar = getSaveGame();
     //Run the intro for those who haven't played
-    if (!getVisited()) {
+    if (!getVisited() || playerChar === null) {
         startIntro();
+        playerChar = basePlayer;
         saveGameData(playerChar);
     }
-    else playerChar = getSaveGame();
+    updateStats(playerChar);
 
     //Handle the commands input
     $('#term-inputBox').keydown(function (e) {
         if (e.key === 'Enter') { //Only run commands after enter has been pressed
+            console.debug('Terminal used in climode ' + cliMode);
+            updateStats(playerChar);
+
             switch (cliMode) {
                 case cliModes.TERM:
                     // noinspection JSJQueryEfficiency
                     termCommand($('#term-inputBox').val());
                     break;
                 case cliModes.STORY:
+                    storyTerm($('#term-inputBox').val());
                     break;
                 case cliModes.BATTLE:
+                    battleCommand($('#term-inputBox').val());
                     break;
                 default:
                     console.error('value set out of bounds of enum')
@@ -59,6 +73,26 @@ $(document).ready(function () {
             // noinspection JSJQueryEfficiency
             $('#term-inputBox').val(''); //Clear the input box
         }
+    });
+
+    //Debug
+    $('#dbgBattleBtn').click(function (){
+       cliMode = cliModes.BATTLE;
+    });
+    $('#dbgStoryBtn').click(function (){
+        cliMode = cliModes.STORY;
+    });
+    $('#dbgTermBtn').click(function (){
+        cliMode = cliModes.TERM;
+    });
+    $('#dbgLvl1BattleBtn').click(function (){
+        //TODO: Force start a battle
+    });
+    $('#dbgForceSave').click(function (){
+        saveGameData(playerChar);
+    });
+    $('#dbgDeleteSave').click(function (){
+       restartSave();
     });
 });
 

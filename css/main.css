@@ -11,7 +11,11 @@ html{
     --teko-font: 'Teko', sans-serif;
 }
 
-button{
+ul, li {
+    list-style-type: none;
+}
+
+button, a{
     display: inline-block;
     background-color: #050505;
     border-radius: 0.5rem;
@@ -77,10 +81,12 @@ button{
 
 .statBar-item{
     border: 1px solid #005000;
-    margin: 0 1rem 0; 
+    margin: auto 0.5rem auto;
+    text-alaign: center;
 }
 
 #statBar-title {
+    border: none;
     font-family: var(--teko-font);
     font-size: 2em;
 }
@@ -109,14 +115,14 @@ button{
     font-size: 1em;
 }
 
- /* Terminal Things */
-
-#infoScreen {
+.info-screen {
     /* height: 89%; */
     width: 89%;
     border: solid 3px limegreen;
     margin-left: 5px;
 }
+
+ /* Terminal Things */
 
 #term-output {
     background-color: black;
