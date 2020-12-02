@@ -1,9 +1,7 @@
 console.debug('Terminal library loaded');
 
-function termCommand(input){
+function termCommand(cmd, args){
     termOutput($('#term-input').text() + input);
-    const args = String(input).trim().split(/ +/g)
-    const cmd = args.shift().toLowerCase();
 
     console.log('term switch running');
     switch(cmd){
@@ -31,11 +29,6 @@ function termCommand(input){
             break;
     }
 }
-
-function termOutput(txt){
-    $('#term-output').append('<p class="termItem">' + txt + '</p>');
-}
-
 function changePath(type, text=''){
     const curPath = String($('#term-inputHeader').text());
 
@@ -76,3 +69,4 @@ function changePath(type, text=''){
         $('#term-inputHeader').text(pathOut);
     }
 }
+

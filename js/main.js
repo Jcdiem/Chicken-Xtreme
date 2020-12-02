@@ -37,29 +37,37 @@ $(document).ready(function () {
     //Handle the commands input
     $('#term-inputBox').keydown(function (e) {
         if (e.key === 'Enter') { //Only run commands after enter has been pressed
-            console.debug('Terminal used in climode ' + cliMode);
+            const input = $('#term-inputBox').val();
+            const args = String(input).trim().split(/ +/g);
+            const cmd = args.shift().toLowerCase();
+
+            //Update character stats every time that they submit a command
             updateStats(gameState.playerChar);
+
+            //Print player command out to terminal for niceness
+            termOutput(input);
+
+
 
             switch (cliMode) {
                 case cliModes.TERM:
-                    // noinspection JSJQueryEfficiency
-                    termCommand($('#term-inputBox').val());
+                    termCommand(cmd, args);
                     break;
                 case cliModes.STORY:
-                    storyTerm($('#term-inputBox').val());
+                    storyTerm(cmd, args);
                     break;
                 case cliModes.BATTLE:
                     //Make sure there is a current battle
                     if(curBattle){
-                        curBattle.curBattleCommand($('#term-inputBox').val());
+                        curBattle.curBattleCommand(cmd, args);
                     }
                     else throw new Error('ERROR: no battle, but in battle mode');
                     break;
                 case cliModes.EXPLORE:
-                    exploreCommand($('#term-inputBox').val())
+                    exploreCommand(cmd, args)
                     break;
                 default:
-                    console.error('value set out of bounds of enum')
+                    throw new Error('value set out of bounds of enum')
                     break;
             }
             // noinspection JSJQueryEfficiency
@@ -78,7 +86,7 @@ $(document).ready(function () {
         cliMode = cliModes.TERM;
     });
     $('#dbgLvl1BattleBtn').click(function (){
-        curBattle = new BattleManager(1);
+        curBattle = new BattleManager(1,gameState);
     });
     $('#dbgForceSave').click(function (){
         saveGameData(gameState);

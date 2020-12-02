@@ -9,7 +9,6 @@ function toggleAesthetic(){
     const lightStyle = {
         'background-color': 'white',
         'color': 'black',
-
     }
     $('html').css(lightStyle);
     $('.intro-card').css(lightStyle);
@@ -75,3 +74,8 @@ function updateStats(info={
 
 //TODO: Find better way to pass the battle around than a global
 let curBattle;
+
+
+function termOutput(txt){
+    $('#term-output').append('<p class="termItem">' + txt + '</p>');
+}
