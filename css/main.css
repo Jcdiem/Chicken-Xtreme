@@ -123,7 +123,7 @@ button, a{
 }
 
  /* Terminal Things */
-
+/*TODO: Fix the issue where the terminal keeps going down on overflow instead of self-scrolling*/
 #term-output {
     background-color: black;
     border: 1px solid #009000;

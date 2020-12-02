@@ -22,15 +22,13 @@ $(document).ready(function () {
     //THE HANDLER OF ALL THAT IS SACRED
     //Contains the whole current game state, exploration data, player data, battles, stats etc.
     //Basically a game database
-    const gameState = (!getVisited() || getSaveGame() === null) ?
-        new gameManager() : //If there is no save, then make new game manager
-        getSaveGame();      //If there is a save, use it
+    const gameState = new gameManager();
 
     //Run the intro for those who haven't played
-    if (gameState.newSave) {
+    if (gameState.gameData.newSave) {
         startIntro();
         gameState.noLongerNew();
-        saveGameData(gameState);
+        gameState.saveGameState();
     }
     updateStats(gameState.playerChar);
 
@@ -45,7 +43,7 @@ $(document).ready(function () {
             updateStats(gameState.playerChar);
 
             //Print player command out to terminal for niceness
-            termOutput(input);
+            termOutput('>'+input);
 
 
 
@@ -58,8 +56,8 @@ $(document).ready(function () {
                     break;
                 case cliModes.BATTLE:
                     //Make sure there is a current battle
-                    if(curBattle){
-                        curBattle.curBattleCommand(cmd, args);
+                    if(gameState.currentlyBattling()){
+                        gameState.gameData.curBattle.curBattleCommand(cmd, args);
                     }
                     else throw new Error('ERROR: no battle, but in battle mode');
                     break;
@@ -86,10 +84,10 @@ $(document).ready(function () {
         cliMode = cliModes.TERM;
     });
     $('#dbgLvl1BattleBtn').click(function (){
-        curBattle = new BattleManager(1,gameState);
+        gameState.startBattle(1);
     });
     $('#dbgForceSave').click(function (){
-        saveGameData(gameState);
+        gameState.saveGameState();
     });
     $('#dbgDeleteSave').click(function (){
        restartSave();

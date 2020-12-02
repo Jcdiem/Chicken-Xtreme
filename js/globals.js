@@ -29,9 +29,9 @@ function getVisited(){
 
 //Save game handling
 
-function saveGameData(gameManagerObject){//Data saved with stringify
+function saveGameData(gameData){//Data saved with stringify
     console.debug('saving game');
-    window.localStorage.setItem('chickenXSave', btoa(JSON.stringify(gameManagerObject)));
+    window.localStorage.setItem('chickenXSave', btoa(JSON.stringify(gameData)));
 }
 
 function getSaveGame(){
@@ -71,10 +71,6 @@ function updateStats(info={
     $('#statBar-plyMoney').text('Cxn: ' + info.money);
 
 }
-
-//TODO: Find better way to pass the battle around than a global
-let curBattle;
-
 
 function termOutput(txt){
     $('#term-output').append('<p class="termItem">' + txt + '</p>');

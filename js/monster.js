@@ -8,6 +8,8 @@ class Monster {
             health: -1,
             atk: -1,
             def: -1,
+            acc: -1,
+            critChance: -1,
         };
     style = -1;
     nameList = {
@@ -42,8 +44,18 @@ class Monster {
         //Level is 1 for each difficulty (starting at easy) give or take 5
         this.statBlock.level = ((this.difficulty + 1) + Math.round((Math.random() * 10) % 6));
         //Atk and Def = level * ( a random number between 5 and 1)
-        this.statBlock.atk = Math.round(this.statBlock.level * (((Math.random() * 10) % 5) + 1));
-        this.statBlock.def = Math.round(this.statBlock.level * (((Math.random() * 10) % 5) + 1));
+        this.statBlock.atk = this.getStat(5);
+        this.statBlock.def = this.getStat(5);
+
+        //Accuracy is calculated by level * 20 up to 90
+        //This is to give complete newbies a chance to learn the game
+        this.statBlock.acc = (this.statBlock.level * 20);
+        if(this.statBlock.acc > 90) this.statBlock.acc = 90;
+
+        //TODO: Have Crit be affected by random gen items on monsters
+        this.statBlock.critChance = this.getStat(5);
+
+
         //Generate HP based upon having base 10 per level and give random up to 14.
         this.statBlock.health = ((this.statBlock.level * 10) + Math.round(((Math.random() * 100) % 15)));
 
@@ -68,6 +80,10 @@ class Monster {
         if (this.name === 'error') {
             throw new Error('Random enemy name was not generated');
         }
+    }
+    getStat(maxPerLevel=-1, tens=1){
+        if(maxPerLevel === -1) throw new Error('getStat called without being given a max value');
+        return Math.round(this.statBlock.level * (((Math.random() * Math.pow(10,tens)) % maxPerLevel) + 1));
     }
 
 

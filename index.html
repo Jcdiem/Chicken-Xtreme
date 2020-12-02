@@ -11,19 +11,24 @@
 
     <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
     <link rel="stylesheet" href="css/main.css">
-
+                        <!--Globally used stuff-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/globals.js"></script>
-    <script type="text/javascript" src="js/gameState.js"></script>
-    <script type="text/javascript" src="js/intro.js"></script>
-    <script type="text/javascript" src="js/term.js"></script>
 
-    <script type="text/javascript" src="js/story.js"></script>
-
-    <script type="text/javascript" src="js/exploration.js"></script>
+                        <!--  Classes  -->
+    <script type="text/javascript" src="js/character.js"></script>
     <script type="text/javascript" src="js/monster.js"></script>
+    <script type="text/javascript" src="js/gameState.js"></script>
+
+                    <!--  Terminal Modes  -->
+    <script type="text/javascript" src="js/story.js"></script>
+    <script type="text/javascript" src="js/term.js"></script>
+    <script type="text/javascript" src="js/exploration.js"></script>
     <script type="text/javascript" src="js/battle.js"></script>
+
+                        <!--Events etc-->
+    <script type="text/javascript" src="js/intro.js"></script>
 
 </head>
 <body>
@@ -86,6 +91,7 @@
         <div id=""></div>
     </div>
 </main>
+<!--Main is loaded last so that it can use everything-->
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
