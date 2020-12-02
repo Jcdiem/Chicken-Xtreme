@@ -40,7 +40,7 @@ function getSaveGame(){
     else return JSON.parse(atob(window.localStorage.getItem('chickenXSave')));
 }
 
-function restartSave(defaultPlayer){
+function restartSave(){
     console.debug('deleting save');
     window.localStorage.removeItem('chickenXSave');
     location.reload(true);

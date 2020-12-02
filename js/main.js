@@ -78,10 +78,10 @@ $(document).ready(function () {
         cliMode = cliModes.TERM;
     });
     $('#dbgLvl1BattleBtn').click(function (){
-        //TODO: Force start a battle
+        curBattle = new BattleManager(1);
     });
     $('#dbgForceSave').click(function (){
-        saveGameData(playerChar);
+        saveGameData(gameState);
     });
     $('#dbgDeleteSave').click(function (){
        restartSave();
