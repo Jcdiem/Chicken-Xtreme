@@ -30,13 +30,14 @@ function getVisited(){
 
 //Save game handling
 
-function saveGameData(playerObject){//Data saved with stringify
+function saveGameData(gameManagerObject){//Data saved with stringify
     console.debug('saving game');
-    window.localStorage.setItem('chickenXSave', JSON.stringify(playerObject));
+    window.localStorage.setItem('chickenXSave', btoa(JSON.stringify(gameManagerObject)));
 }
 
 function getSaveGame(){
-    return JSON.parse(window.localStorage.getItem('chickenXSave'));
+    if(window.localStorage.getItem('chickenXSave') === null) return null
+    else return JSON.parse(atob(window.localStorage.getItem('chickenXSave')));
 }
 
 function restartSave(defaultPlayer){
@@ -71,3 +72,6 @@ function updateStats(info={
     $('#statBar-plyMoney').text('Cxn: ' + info.money);
 
 }
+
+//TODO: Find better way to pass the battle around than a global
+let curBattle;

@@ -5,10 +5,10 @@ function termCommand(input){
     const args = String(input).trim().split(/ +/g)
     const cmd = args.shift().toLowerCase();
 
-    console.log('switch running');
+    console.log('term switch running');
     switch(cmd){
         case 'help':
-            termOutput('Availble commands are \'cd\', \'clear\', and \'help\'')
+            termOutput('Available commands are \'cd\', \'clear\', and \'help\'')
             break;
 
         case 'cd':

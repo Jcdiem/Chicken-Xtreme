@@ -12,48 +12,33 @@ $(document).ready(function () {
         TERM: 0,
         BATTLE: 1,
         STORY: 2,
+        EXPLORE: 3,
     }
     let cliMode = cliModes.STORY; //TODO: Move cliMode to be handled by buttons/cur screen
     if (!cliMode) { //Error checking to make sure the Enum works correctly
         throw new Error('cliModes ENUM is borked')
     }
 
-    //Player setup
-    const basePlayer ={ //TODO: Implement leveling properly
-        name: 'John Doe',
-        money: 0,
-        statBlock: {
-            level: 0,
-            exp: 0,
-            health: 10,
-            atk: 1,
-            def: 1,
-        },
-        locationsAllowed: {
-            terminal: true,
-            debug: true, //TODO: implement a place that only shows up after searching
-        },
-        otherValues: {
-            isDev: true, //Debug value or cheating mode TODO: CATCH_ALL: SET DEV VALUES FALSE
-        },
+    //THE HANDLER OF ALL THAT IS SACRED
+    //Contains the whole current game state, exploration data, player data, battles, stats etc.
+    //Basically a game database
+    const gameState = (!getVisited() || getSaveGame() === null) ?
+        new gameManager() : //If there is no save, then make new game manager
+        getSaveGame();      //If there is a save, use it
 
-    };
-
-
-    let playerChar = getSaveGame();
     //Run the intro for those who haven't played
-    if (!getVisited() || playerChar === null) {
+    if (gameState.newSave) {
         startIntro();
-        playerChar = basePlayer;
-        saveGameData(playerChar);
+        gameState.noLongerNew();
+        saveGameData(gameState);
     }
-    updateStats(playerChar);
+    updateStats(gameState.playerChar);
 
     //Handle the commands input
     $('#term-inputBox').keydown(function (e) {
         if (e.key === 'Enter') { //Only run commands after enter has been pressed
             console.debug('Terminal used in climode ' + cliMode);
-            updateStats(playerChar);
+            updateStats(gameState.playerChar);
 
             switch (cliMode) {
                 case cliModes.TERM:
@@ -64,7 +49,14 @@ $(document).ready(function () {
                     storyTerm($('#term-inputBox').val());
                     break;
                 case cliModes.BATTLE:
-                    battleCommand($('#term-inputBox').val());
+                    //Make sure there is a current battle
+                    if(curBattle){
+                        curBattle.curBattleCommand($('#term-inputBox').val());
+                    }
+                    else throw new Error('ERROR: no battle, but in battle mode');
+                    break;
+                case cliModes.EXPLORE:
+                    exploreCommand($('#term-inputBox').val())
                     break;
                 default:
                     console.error('value set out of bounds of enum')

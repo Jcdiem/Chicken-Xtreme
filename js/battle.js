@@ -3,8 +3,8 @@ console.debug('Battle scripts loading');
 //Battle handling
 
 class BattleManager { //One created for each battle run
-    enemyTest;
-    difficulty;
+    enemyList = [];
+    difficulty = -1;
 
     constructor(difficulty=-1,
                 specialValues={
@@ -16,23 +16,30 @@ class BattleManager { //One created for each battle run
 
 
         this.difficulty = difficulty;
-
-        this.enemyTest = new Monster(difficulty)
     }
+
+    addEnemy(enemy){
+        this.enemyList.push(enemy);
+        termOutput('Enemy ' + enemy.name + ' has joined the battle!');
+    }
+
+
+    //DIRECT COMMAND TO PROPER METHOD
+    curBattleCommand(input){
+        const args = String(input).trim().split(/ +/g);
+        const cmd = args.shift().toLowerCase();
+
+        switch (cmd){
+            default:
+                termOutput('Unrecognized battle command, try \'help\' if you\'re stuck.');
+                break;
+        }
+    }
+
+    //Debug methods
 
     test(){
-        console.debug(this.enemyTest)
+        console.debug(this.enemyTest);
     }
-}
 
-function battleCommand(input){
-    const args = String(input).trim().split(/ +/g)
-    const cmd = args.shift().toLowerCase();
-
-    switch (cmd){
-        default:
-            throw new Error('Improper command given to battleCommand');
-            termOutput('Unrecognized command, try \'help\' if you\'re stuck.');
-            break;
-    }
 }
