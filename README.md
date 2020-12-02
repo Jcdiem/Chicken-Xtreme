@@ -7,8 +7,10 @@ This rendetion of Chicken will be completed to the point of Chicken 2, about. My
 
 ## Using and Timeline
 ### How to use
-General: Visit <a href="https://fac.diemconsulting.net/xchicken">My Website</a> <br>
-The website is the dev site, so do expect *many* broken things.
+General: Visit <a href="https://jcdiem.github.io/Chicken-Xtreme/">The GitHub Pages</a> <br>
+I usually don't push to the GitHub unless it's somewhat working, so this should be relatively stable.
+
+Unstable: Vist <a href="https://fac.diemconsulting.net/xchicken/index.html">my dev site</a> to see if I've changed anything since my last commit
 
 Self-Host: Host a web server and throw these files somewhere in it ¯\\\_(ツ)_/¯
 
