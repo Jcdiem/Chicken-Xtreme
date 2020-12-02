@@ -18,6 +18,11 @@ Self-Host: Host a web server and throw these files somewhere in it ¯\\\_(ツ)_/
 Class ends December, so guess that's my limit. I'm not going to spend the time making a Trello-like board for this, so just follow the commits for what's going on. I'm usually pretty good about describing comments. I'll also leave a changelog to follow previous progress for 'full' changes.
 
 ### Changelog
+#### V 0.0.4 - Battling & Abstractions
+Main change is that battling is now ready to have the functions crammed out in a few hours, but I'm dead after some other fixes. Currently you can attack things, but they won't die after reaching 0 health.
+
+Side changes I worked on were making the code more readable, adding more comments, and reducing clutter in the code. This means that everything is now handled by gameState, instead of a bunch of random files touching everything. This makes changes less annoying to make, so hopefully progress will speed up.
+
 #### V 0.0.3 - Battle Framework
 Added framework for a battling system. The BattleManager class can currently create enemies and give them stats, a name, and a random intent.
 I hope to work on adding a specialised style based upon good stats, I.E. a health heavy enemy will play tank when with a partner, but right now all intents are random.
