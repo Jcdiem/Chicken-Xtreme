@@ -8,6 +8,9 @@ class BattleManager { //One created for each battle run
     enemyList = []; //People not on the player team
     difficulty = -1;
     gameState;
+    goodDead = 0;
+    enemyDead = 0;
+    battling = true;
 
     constructor(difficulty=-1, gameState,
                 specialValues={
@@ -45,64 +48,86 @@ class BattleManager { //One created for each battle run
         this.curID++;
     }
 
+    //To be run after every action
+    checkBattleStatus(){
+        const enemyCount = this.enemyList.length;
+
+        for(let i = 0; i < enemyCount; i++){
+            if (this.enemyList[i].statBlock.health <= 0){
+                //TODO: Implement a more extravagant death
+                this.enemyDead += 1;
+                termOutput(this.enemyList[i].name + ' has fallen in combat!');
+                this.doWin();
+            }
+        }
+    }
+
+    doWin(){
+        //TODO: More to winning
+        this.battling = false;
+        termOutput('You have won the combat!');
+    }
 
     //Battle input handler
     curBattleCommand(cmd, args){
 
 
-        switch (cmd){
-            case 'help':
-                termOutput('Please replaces all instances of [ ] with just what it describes')
-                termOutput('    -Example: \'Attack [enemy]\' is just \'Attack 1\'');
-                termOutput('Currently Available commands are: ');
-                termOutput('--Clear / Cls: Clear the screen')
-                termOutput('--Status: The stats of everyone in the fight, with opponent numbers');
-                termOutput('--Atk [enemy] / Attack [enemy]: Will attack numbered opponent');
-                termOutput('--Inv: List all of the items in your inventory');
-                termOutput('--Use [item]: use a numbered item from your inventory (IN PROGRESS)');
-                termOutput('--Skills: List the skills you have equipped, for reference');
-                termOutput('--Skill [skill] [enemy]: Use a skill (In progress)');
-                termOutput('--Fort / Fortify: Use your turn to increase def until next turn');
-                //Each new command is a separate output
-                break;
+        if(this.battling){
+            switch (cmd) {
+                case 'help':
+                    termOutput('Please replaces all instances of [ ] with just what it describes')
+                    termOutput('    -Example: \'Attack [enemy]\' is just \'Attack 1\'');
+                    termOutput('Currently Available commands are: ');
+                    termOutput('--Clear / Cls: Clear the screen')
+                    termOutput('--Status: The stats of everyone in the fight, with opponent numbers');
+                    termOutput('--Atk [enemy] / Attack [enemy]: Will attack numbered opponent');
+                    termOutput('--Inv: List all of the items in your inventory');
+                    termOutput('--Use [item]: use a numbered item from your inventory (IN PROGRESS)');
+                    termOutput('--Skills: List the skills you have equipped, for reference');
+                    termOutput('--Skill [skill] [enemy]: Use a skill (In progress)');
+                    termOutput('--Fort / Fortify: Use your turn to increase def until next turn');
+                    //Each new command is a separate output
+                    break;
 
-            case 'cls':
-            case 'clear':
-                $('#term-output').empty();
-                termOutput(cmd);
-                break;
+                case 'cls':
+                case 'clear':
+                    $('#term-output').empty();
+                    termOutput(cmd);
+                    break;
 
-            case 'stat':
-            case 'status':
-                this.battleStats();
-                break;
+                case 'stat':
+                case 'status':
+                    this.battleStats();
+                    break;
 
-            case 'atk':
-            case 'attack':
-                this.attack(0,Number(args[0]))
-                break;
+                case 'atk':
+                case 'attack':
+                    this.attack(0, Number(args[0]))
+                    break;
 
-            case 'inv':
-            case 'inventory':
-                break;
+                case 'inv':
+                case 'inventory':
+                    break;
 
-            case 'use':
-                break;
+                case 'use':
+                    break;
 
-            case 'skills':
-                break;
+                case 'skills':
+                    break;
 
-            case 'skill':
-                break;
+                case 'skill':
+                    break;
 
-            case 'fort':
-            case 'fortify':
-                break;
+                case 'fort':
+                case 'fortify':
+                    break;
 
-            default:
-                termOutput('Unrecognized battle command, try \'help\' if you\'re stuck.');
-                break;
+                default:
+                    termOutput('Unrecognized battle command, try \'help\' if you\'re stuck.');
+                    break;
+            }
         }
+        else termOutput('The battle has ended, please refresh the page for another during testing mode.')
     }
 
 

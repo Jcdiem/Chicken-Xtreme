@@ -14,7 +14,7 @@ $(document).ready(function () {
         STORY: 2,
         EXPLORE: 3,
     }
-    let cliMode = cliModes.STORY; //TODO: Move cliMode to be handled by buttons/cur screen
+    let cliMode = cliModes.BATTLE; //TODO: Move cliMode to be handled by buttons/cur screen
     if (!cliMode) { //Error checking to make sure the Enum works correctly
         throw new Error('cliModes ENUM is borked')
     }
@@ -31,6 +31,7 @@ $(document).ready(function () {
         gameState.saveGameState();
     }
     updateStats(gameState.playerChar);
+
 
     //Handle the commands input
     $('#term-inputBox').keydown(function (e) {
@@ -94,3 +95,10 @@ $(document).ready(function () {
     });
 });
 
+function doFinishedForIntroJava(gameState){
+    termOutput('Currently, the game is not finished, as you can see.');
+    termOutput('Because of this, I am using the BATTLE mode as my Final Project.');
+    termOutput('Battle Starting:')
+    gameState.startBattle(1);
+
+}
