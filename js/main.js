@@ -31,6 +31,7 @@ $(document).ready(function () {
         gameState.saveGameState();
     }
     updateStats(gameState.playerChar);
+    doFinishedForIntroJava(gameState);
 
 
     //Handle the commands input
